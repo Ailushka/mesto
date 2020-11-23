@@ -12,7 +12,7 @@
 
 **GitHub Pages**
 
-* [Ссылка на проект на GitHub Pages](https://ailushka.github.io/mesto/index.html)
+* [Ссылка на проект на GitHub Pages](https://ailushka.github.io/mesto/)
 
 **Технологии**
 
