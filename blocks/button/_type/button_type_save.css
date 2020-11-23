@@ -1,26 +1,22 @@
-.save-button {
+.button_type_save {
   width: 100%;
-  border: 0;
-  outline: 0;
   background-color: black;
   border-radius: 2px;
-  margin: 0 auto;
+  margin: auto;
   padding: 14px 0;
   box-sizing: border-box;
   font-weight: 400;
   font-size: 18px;
   line-height: calc(22 / 18);
   color: white;
-  transition: opacity .3s linear;
 }
 
-.save-button:hover {
+.button_type_save:hover {
   opacity: .8;
-  cursor: pointer;
 }
 
 @media (max-width:768px) {
-  .save-button {
+  .button_type_save {
     font-size: 14px;
     line-height: calc(17 / 14);
   }

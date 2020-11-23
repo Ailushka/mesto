@@ -16,61 +16,57 @@
 
     <main class="main">
       <section class="profile container">
-        <figure class="profile__info">
-          <img class="profile__avatar" alt="Фото профиля" src="./images/avatar-image.jpg" />
-          <figcaption class="profile__text">
-            <div class="edit-container">
-              <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button type="submit" class="edit-button"></button>
-            </div>
-            <p class="profile__job">Исследователь океана</p>
-          </figcaption>
-        </figure>
-        <button type="submit" class="add-button"></button>
+        <img class="profile__avatar" alt="Фото профиля" src="./images/avatar-image.jpg" />
+        <div class="profile__text">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button type="button" class="button button_type_edit" aria-label="Редактировать"></button>
+          <p class="profile__job">Исследователь океана</p>
+        </div>
+        <button type="button" class="button button_type_add" aria-label="Добавить"></button>
       </section>
 
       <section class="gallery container">
         <ul class="gallery__list">
-          <li class="gallery__item">
-            <img class="gallery__item-image" src="./images/karachaevsk.jpg" alt="Карачаевск" />
-            <div class="gallery__item-info">
-              <h3 class="gallery__item-title">Карачаевск</h3>
-              <button type="button" class="like-button"></button>
+          <li class="gallery-item">
+            <img class="gallery-item__image" src="./images/karachaevsk.jpg" alt="Карачаевск" />
+            <div class="gallery-item__info">
+              <h2 class="gallery-item__title">Карачаевск</h2>
+              <button type="button" class="button button_type_like" aria-label="Нравится"></button>
             </div>
           </li>
-          <li class="gallery__item">
-            <img class="gallery__item-image" src="./images/elbrus.jpg" alt="Гора Эльбрус" />
-            <div class="gallery__item-info">
-              <h3 class="gallery__item-title">Гора Эльбрус</h3>
-              <button type="button" class="like-button"></button>
+          <li class="gallery-item">
+            <img class="gallery-item__image" src="./images/elbrus.jpg" alt="Гора Эльбрус" />
+            <div class="gallery-item__info">
+              <h2 class="gallery-item__title">Гора Эльбрус</h2>
+              <button type="button" class="button button_type_like" aria-label="Нравится"></button>
             </div>
           </li>
-          <li class="gallery__item">
-            <img class="gallery__item-image" src="./images/dombay.jpg" alt="Домбай" />
-            <div class="gallery__item-info">
-              <h3 class="gallery__item-title">Домбай</h3>
-              <button type="button" class="like-button"></button>
+          <li class="gallery-item">
+            <img class="gallery-item__image" src="./images/dombay.jpg" alt="Домбай" />
+            <div class="gallery-item__info">
+              <h2 class="gallery-item__title">Домбай</h2>
+              <button type="button" class="button button_type_like" aria-label="Нравится"></button>
             </div>
           </li>
-          <li class="gallery__item">
-            <img class="gallery__item-image" src="./images/elbrus.jpg" alt="Гора Эльбрус" />
-            <div class="gallery__item-info">
-              <h3 class="gallery__item-title">Гора Эльбрус</h3>
-              <button type="button" class="like-button"></button>
+          <li class="gallery-item">
+            <img class="gallery-item__image" src="./images/elbrus.jpg" alt="Гора Эльбрус" />
+            <div class="gallery-item__info">
+              <h2 class="gallery-item__title">Гора Эльбрус</h2>
+              <button type="button" class="button button_type_like" aria-label="Нравится"></button>
             </div>
           </li>
-          <li class="gallery__item">
-            <img class="gallery__item-image" src="./images/dombay.jpg" alt="Домбай" />
-            <div class="gallery__item-info">
-              <h3 class="gallery__item-title">Домбай</h3>
-              <button type="button" class="like-button"></button>
+          <li class="gallery-item">
+            <img class="gallery-item__image" src="./images/dombay.jpg" alt="Домбай" />
+            <div class="gallery-item__info">
+              <h2 class="gallery-item__title">Домбай</h2>
+              <button type="button" class="button button_type_like" aria-label="Нравится"></button>
             </div>
           </li>
-          <li class="gallery__item">
-            <img class="gallery__item-image" src="./images/karachaevsk.jpg" alt="Карачаевск" />
-            <div class="gallery__item-info">
-              <h3 class="gallery__item-title">Карачаево-Черкессия</h3>
-              <button type="button" class="like-button"></button>
+          <li class="gallery-item">
+            <img class="gallery-item__image" src="./images/karachaevsk.jpg" alt="Карачаевск" />
+            <div class="gallery-item__info">
+              <h2 class="gallery-item__title">Карачаево-Черкессия</h2>
+              <button type="button" class="button button_type_like" aria-label="Нравится"></button>
             </div>
           </li>
         </ul>
@@ -78,22 +74,34 @@
     </main>
 
     <footer class="footer container">
-      <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <section class="popup">
+    <article class="popup">
       <div class="popup__container">
-        <form class="form">
+        <form class="form" name="edit-form">
           <h2 class="form__title">Редактировать профиль</h2>
           <fieldset class="form__user-info">
             <input class="form__item form__item_type_name" type="text" name="user-name" />
             <input class="form__item form__item_type_job" type="text" name="user-job" />
           </fieldset>
-          <button class="save-button" type="submit">Сохранить</button>
+          <button class="button button_type_save" type="submit">Сохранить</button>
         </form>
-        <button class="close-button" type="button"></button>
+        <button class=" button button_type_close" type="button" aria-label="Закрыть"></button>
       </div>
-    </section>
+    </article>
     <script src="./index.js"></script>
   </body>
 </html>
+
+<!-- <section class="profile container">
+  <img class="profile__avatar" alt="Фото профиля" src="./images/avatar-image.jpg" />
+  <div class="profile__text">
+    <div class="edit-container">
+      <h1 class="profile__name">Жак-Ив Кусто</h1>
+      <button type="button" class="button button_type_edit" aria-label="Редактировать"></button>
+    </div>
+    <p class="profile__job">Исследователь океана</p>
+  </div>
+  <button type="button" class="button button_type_add" aria-label="Добавить"></button>
+</section> -->

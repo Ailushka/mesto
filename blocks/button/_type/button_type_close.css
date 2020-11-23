@@ -1,0 +1,16 @@
+.button_type_close {
+  width: 40px;
+  height: 40px;
+  background-image: url(../../../images/close-button.svg);
+  position: absolute;
+  top: -40px;
+  right: -40px;
+}
+
+@media (max-width: 768px) {
+  .button_type_close {
+    top: -53px;
+    right: -2px;
+    background-size: cover;
+  }
+}
