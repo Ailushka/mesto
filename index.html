@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mesto Russia</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+  <body class="page">
+    <header class="header container">
+      <div class="header__content">
+        <img class="header__logo" src="./images/logo.svg" alt="Логотип проекта Mesto Russia" />
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="profile container">
+        <figure class="profile__info">
+          <img class="profile__avatar" alt="Фото профиля" src="./images/avatar-image.jpg" />
+          <figcaption class="profile__text">
+            <div class="edit-container">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button type="submit" class="edit-button"></button>
+            </div>
+            <p class="profile__job">Исследователь океана</p>
+          </figcaption>
+        </figure>
+        <button type="submit" class="add-button"></button>
+      </section>
+
+      <section class="gallery container">
+        <ul class="gallery__list">
+          <li class="gallery__item">
+            <img class="gallery__item-image" src="./images/karachaevsk.jpg" alt="Карачаевск" />
+            <div class="gallery__item-info">
+              <h3 class="gallery__item-title">Карачаевск</h3>
+              <button type="button" class="like-button"></button>
+            </div>
+          </li>
+          <li class="gallery__item">
+            <img class="gallery__item-image" src="./images/elbrus.jpg" alt="Гора Эльбрус" />
+            <div class="gallery__item-info">
+              <h3 class="gallery__item-title">Гора Эльбрус</h3>
+              <button type="button" class="like-button"></button>
+            </div>
+          </li>
+          <li class="gallery__item">
+            <img class="gallery__item-image" src="./images/dombay.jpg" alt="Домбай" />
+            <div class="gallery__item-info">
+              <h3 class="gallery__item-title">Домбай</h3>
+              <button type="button" class="like-button"></button>
+            </div>
+          </li>
+          <li class="gallery__item">
+            <img class="gallery__item-image" src="./images/elbrus.jpg" alt="Гора Эльбрус" />
+            <div class="gallery__item-info">
+              <h3 class="gallery__item-title">Гора Эльбрус</h3>
+              <button type="button" class="like-button"></button>
+            </div>
+          </li>
+          <li class="gallery__item">
+            <img class="gallery__item-image" src="./images/dombay.jpg" alt="Домбай" />
+            <div class="gallery__item-info">
+              <h3 class="gallery__item-title">Домбай</h3>
+              <button type="button" class="like-button"></button>
+            </div>
+          </li>
+          <li class="gallery__item">
+            <img class="gallery__item-image" src="./images/karachaevsk.jpg" alt="Карачаевск" />
+            <div class="gallery__item-info">
+              <h3 class="gallery__item-title">Карачаево-Черкессия</h3>
+              <button type="button" class="like-button"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer container">
+      <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
+    </footer>
+
+    <section class="popup">
+      <div class="popup__container">
+        <form class="form">
+          <h2 class="form__title">Редактировать профиль</h2>
+          <fieldset class="form__user-info">
+            <input class="form__item form__item_type_name" type="text" name="user-name" />
+            <input class="form__item form__item_type_job" type="text" name="user-job" />
+          </fieldset>
+          <button class="save-button" type="submit">Сохранить</button>
+        </form>
+        <button class="close-button" type="button"></button>
+      </div>
+    </section>
+    <script src="./index.js"></script>
+  </body>
+</html>
