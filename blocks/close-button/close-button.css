@@ -19,3 +19,12 @@
   opacity: .6;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .close-button {
+    width: 20px;
+    height: 20px;
+    top: -40px;
+    left: 256px;
+  }
+}
