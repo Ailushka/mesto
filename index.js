@@ -1,18 +1,20 @@
-let editButton = document.querySelector('.button_type_edit');
-let closeButton = document.querySelector('.button_type_close');
-let addButton = document.querySelector('.button_type_add');
-let popUp = document.querySelector('.popup');
-let popUpEdit = document.querySelector('.popup_type_edit');
-let popUpAdd = document.querySelector('.popup_type_add');
-let popUpOpen = document.querySelector('.popup_type_image');
-let nameProfile = document.querySelector('.profile__name');
-let jobProfile = document.querySelector('.profile__job');
-let nameInput = document.querySelector('.form__item_type_name');
-let jobInput = document.querySelector('.form__item_type_job');
-let cardNameInput = document.querySelector('.form__item_type_card-name');
-let cardLinkInput = document.querySelector('.form__item_type_card-link');
-let formElement = document.querySelector('[name="edit-form"]');
-let newCardElement = document.querySelector('[name="add-form"]');
+const editButton = document.querySelector('.button_type_edit');
+const closeButton = document.querySelector('.button_type_close');
+const addCloseButton = document.querySelector('.button_type_add-close');
+const imageCloseButton = document.querySelector('.button_type_image-close');
+const addButton = document.querySelector('.button_type_add');
+const popUp = document.querySelector('.popup');
+const popUpEdit = document.querySelector('.popup_type_edit');
+const popUpAdd = document.querySelector('.popup_type_add');
+const popUpOpen = document.querySelector('.popup_type_image');
+const nameProfile = document.querySelector('.profile__name');
+const jobProfile = document.querySelector('.profile__job');
+const nameInput = document.querySelector('.form__item_type_name');
+const jobInput = document.querySelector('.form__item_type_job');
+const cardNameInput = document.querySelector('.form__item_type_card-name');
+const cardLinkInput = document.querySelector('.form__item_type_card-link');
+const formElement = document.querySelector('[name="edit-form"]');
+const newCardElement = document.querySelector('[name="add-form"]');
 
 const initialCards = [
     {
@@ -120,6 +122,8 @@ editButton.addEventListener('click', editPopUp);
 addButton.addEventListener('click', addItem);
 
 closeButton.addEventListener('click', closePopUp);
+addCloseButton.addEventListener('click', closePopUp);
+imageCloseButton.addEventListener('click', closePopUp);
 
 formElement.addEventListener('submit', formSubmitHandler);
 newCardElement.addEventListener('submit', addSubmitHandler);
