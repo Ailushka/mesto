@@ -27,48 +27,6 @@
 
       <section class="gallery container">
         <ul class="gallery__list">
-          <li class="gallery-item">
-            <img class="gallery-item__image" src="./images/karachaevsk.jpg" alt="Карачаевск" />
-            <div class="gallery-item__info">
-              <h2 class="gallery-item__title">Карачаевск</h2>
-              <button type="button" class="button button_type_like" aria-label="Нравится"></button>
-            </div>
-          </li>
-          <li class="gallery-item">
-            <img class="gallery-item__image" src="./images/elbrus.jpg" alt="Гора Эльбрус" />
-            <div class="gallery-item__info">
-              <h2 class="gallery-item__title">Гора Эльбрус</h2>
-              <button type="button" class="button button_type_like" aria-label="Нравится"></button>
-            </div>
-          </li>
-          <li class="gallery-item">
-            <img class="gallery-item__image" src="./images/dombay.jpg" alt="Домбай" />
-            <div class="gallery-item__info">
-              <h2 class="gallery-item__title">Домбай</h2>
-              <button type="button" class="button button_type_like" aria-label="Нравится"></button>
-            </div>
-          </li>
-          <li class="gallery-item">
-            <img class="gallery-item__image" src="./images/elbrus.jpg" alt="Гора Эльбрус" />
-            <div class="gallery-item__info">
-              <h2 class="gallery-item__title">Гора Эльбрус</h2>
-              <button type="button" class="button button_type_like" aria-label="Нравится"></button>
-            </div>
-          </li>
-          <li class="gallery-item">
-            <img class="gallery-item__image" src="./images/dombay.jpg" alt="Домбай" />
-            <div class="gallery-item__info">
-              <h2 class="gallery-item__title">Домбай</h2>
-              <button type="button" class="button button_type_like" aria-label="Нравится"></button>
-            </div>
-          </li>
-          <li class="gallery-item">
-            <img class="gallery-item__image" src="./images/karachaevsk.jpg" alt="Карачаевск" />
-            <div class="gallery-item__info">
-              <h2 class="gallery-item__title">Карачаево-Черкессия</h2>
-              <button type="button" class="button button_type_like" aria-label="Нравится"></button>
-            </div>
-          </li>
         </ul>
       </section>
     </main>
@@ -77,31 +35,49 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <article class="popup">
+    <article class="popup popup_type_edit">
       <div class="popup__container">
         <form class="form" name="edit-form">
           <h2 class="form__title">Редактировать профиль</h2>
-          <fieldset class="form__user-info">
+          <fieldset class="form__content form__user-info">
             <input class="form__item form__item_type_name" type="text" name="user-name" />
             <input class="form__item form__item_type_job" type="text" name="user-job" />
           </fieldset>
           <button class="button button_type_save" type="submit">Сохранить</button>
         </form>
-        <button class=" button button_type_close" type="button" aria-label="Закрыть"></button>
+        <button class="button button_type_close" type="button" aria-label="Закрыть"></button>
       </div>
     </article>
+    <article class="popup popup_type_add">
+      <div class="popup__container popup__container_type_add">
+        <form class="form" name="add-form">
+          <h2 class="form__title">Новое место</h2>
+          <fieldset class="form__content form__add-card">
+            <input class="form__item form__item_type_card-name" type="text" name="card-name" placeholder="Название" />
+            <input class="form__item form__item_type_card-link" type="text" name="card-link" placeholder="Ссылка на картинку" />
+          </fieldset>
+          <button class="button button_type_save" type="submit">Создать</button>
+        </form>
+        <button class="button button_type_close" type="button" aria-label="Закрыть"></button>
+      </div>
+    </article>
+    <article class="popup popup_type_image">
+      <div class="popup__image-container">
+        <img class="popup__image" src="http://placehold.it/282x282" alt="Название места" />
+        <h3 class="popup__image-title">Для проверки</h3>
+        <button class="button button_type_close" type="button" aria-label="Закрыть"></button>
+      </div>
+    </article>
+    <template class="template">
+      <li class="gallery-item">
+        <img class="gallery-item__image" src="http://placehold.it/282x282" alt="Название места" />
+        <button type="button" class="button button_type_delete" aria-label="Удалить"></button>
+        <div class="gallery-item__info">
+          <h2 class="gallery-item__title"></h2>
+          <button type="button" class="button button_type_like" aria-label="Нравится"></button>
+        </div>
+      </li>
+    </template>
     <script src="./index.js"></script>
   </body>
 </html>
-
-<!-- <section class="profile container">
-  <img class="profile__avatar" alt="Фото профиля" src="./images/avatar-image.jpg" />
-  <div class="profile__text">
-    <div class="edit-container">
-      <h1 class="profile__name">Жак-Ив Кусто</h1>
-      <button type="button" class="button button_type_edit" aria-label="Редактировать"></button>
-    </div>
-    <p class="profile__job">Исследователь океана</p>
-  </div>
-  <button type="button" class="button button_type_add" aria-label="Добавить"></button>
-</section> -->
