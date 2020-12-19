@@ -1,4 +1,4 @@
-.gallery-item__image {
+.gallery__item-image {
   width: 282px;
   height: 282px;
   object-fit: cover;
@@ -6,6 +6,6 @@
   border-radius: 10px 10px 0px 0px;
 }
 
-.gallery-item__image:hover {
+.gallery__item-image:hover {
   cursor: pointer;
 }

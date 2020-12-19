@@ -26,8 +26,7 @@
       </section>
 
       <section class="gallery container">
-        <ul class="gallery__list">
-        </ul>
+        <ul class="gallery__list"></ul>
       </section>
     </main>
 
@@ -35,49 +34,50 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <article class="popup popup_type_edit">
+    <div class="popup popup_type_edit">
       <div class="popup__container">
-        <form class="form" name="edit-form">
+        <form class="form form_type_edit" name="edit-form">
           <h2 class="form__title">Редактировать профиль</h2>
           <fieldset class="form__content form__user-info">
-            <input class="form__item form__item_type_name" type="text" name="user-name" />
-            <input class="form__item form__item_type_job" type="text" name="user-job" />
+            <input class="form__item form__item_type_name" type="text" name="user-name" required />
+            <input class="form__item form__item_type_job" type="text" name="user-job" required />
           </fieldset>
           <button class="button button_type_save" type="submit">Сохранить</button>
         </form>
         <button class="button button_type_close" type="button" aria-label="Закрыть"></button>
       </div>
-    </article>
-    <article class="popup popup_type_add">
+    </div>
+    <div class="popup popup_type_add">
       <div class="popup__container popup__container_type_add">
-        <form class="form" name="add-form">
+        <form class="form form_type_add" name="add-form">
           <h2 class="form__title">Новое место</h2>
           <fieldset class="form__content form__add-card">
-            <input class="form__item form__item_type_card-name" type="text" name="card-name" placeholder="Название" />
-            <input class="form__item form__item_type_card-link" type="text" name="card-link" placeholder="Ссылка на картинку" />
+            <input class="form__item form__item_type_card-name" type="text" name="card-name" placeholder="Название" required />
+            <input class="form__item form__item_type_card-link" type="url" name="card-link" placeholder="Ссылка на картинку" required />
           </fieldset>
           <button class="button button_type_save" type="submit">Создать</button>
         </form>
-        <button class="button button_type_close button_type_add-close" type="button" aria-label="Закрыть"></button>
+        <button class="button button_type_close" type="button" aria-label="Закрыть"></button>
       </div>
-    </article>
-    <article class="popup popup_type_image">
+    </div>
+    <div class="popup popup_type_image">
       <div class="popup__image-container">
-        <img class="popup__image" src="http://placehold.it/282x282" alt="Название места" />
+        <img class="popup__image" src="./images/zaglushka_282x282.png" alt="#" />
         <h3 class="popup__image-title">Для проверки</h3>
-        <button class="button button_type_close button_type_image-close" type="button" aria-label="Закрыть"></button>
+        <button class="button button_type_close" type="button" aria-label="Закрыть"></button>
       </div>
-    </article>
+    </div>
     <template class="template">
-      <li class="gallery-item">
-        <img class="gallery-item__image" src="http://placehold.it/282x282" alt="Название места" />
+      <li class="gallery__item">
+        <img class="gallery__item-image" src="./images/zaglushka_282x282.png" alt="#" />
         <button type="button" class="button button_type_delete" aria-label="Удалить"></button>
-        <div class="gallery-item__info">
-          <h2 class="gallery-item__title"></h2>
+        <div class="gallery__item-info">
+          <h2 class="gallery__item-title"></h2>
           <button type="button" class="button button_type_like" aria-label="Нравится"></button>
         </div>
       </li>
     </template>
-    <script src="./index.js"></script>
+    <script src="./scripts/initial-сards.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
