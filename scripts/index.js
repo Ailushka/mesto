@@ -53,10 +53,28 @@ function handlePreviewPicture(evt) {
 
 function openPopUp(popup) {
     popup.classList.add('popup_opened');
+    enableValidation(validationConfig);
+    document.addEventListener('click', closePopUpByOverlay);
+    document.addEventListener('keydown', closePopUpByEsc);
 }
 
 function closePopUp(popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('click', closePopUpByOverlay);
+    document.removeEventListener('keydown', closePopUpByEsc);
+}
+
+function closePopUpByOverlay(evt) {
+  if (evt.target.classList.contains('popup_opened')) {
+    closePopUp(evt.target);
+  }
+}
+
+function closePopUpByEsc(evt) {
+  const popUpOpened = document.querySelector('.popup_opened');
+  if (evt.keyCode === 27) {
+    closePopUp(popUpOpened);
+  }
 }
 
 function editPopUp() {
@@ -84,8 +102,7 @@ function handleProfileFormSubmit(evt) {
 editButton.addEventListener('click', editPopUp);
 addButton.addEventListener('click', () => openPopUp(popUpAdd));
 
-
-closeButton.forEach((item) => {
+closeButtons.forEach((item) => {
   item.addEventListener('click', function closePopUp(evt) {
       const popUpToClose = evt.target.closest('.popup');
       popUpToClose.classList.remove('popup_opened');
