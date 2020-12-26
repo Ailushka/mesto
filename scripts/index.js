@@ -16,6 +16,7 @@ const formElement = document.querySelector('.form_type_edit');
 const newCardElement = document.querySelector('.form_type_add');
 const cardsContainerElement = document.querySelector('.gallery__list');
 const templateElement = document.querySelector('.template');
+const ESCAPE = 27;
 
 function renderList() {
   const cardsItems = initialCards.map(composeItem);
@@ -36,24 +37,20 @@ function composeItem(item) {
     evt.target.closest('.gallery__item').remove();
   });
 
-  imageElement.addEventListener('click', handlePreviewPicture);
+  imageElement.addEventListener('click', () => handlePreviewPicture(item.link, item.name));
 
   return newItem;
 }
 
-function handlePreviewPicture(evt) {
-    const imageToOpen = evt.target.closest('.gallery__item');
-    const openedImageName = imageToOpen.querySelector('.gallery__item-title').textContent;
-    const openedImageLink = imageToOpen.querySelector('.gallery__item-image').src;
-    imageTitle.textContent = openedImageName;
-    imageLink.src = openedImageLink;
-    imageLink.alt = openedImageName;
+function handlePreviewPicture(link, name) {
+    imageTitle.textContent = name;
+    imageLink.src = link;
+    imageLink.alt = name;
     openPopUp(popUpOpen);
 }
 
 function openPopUp(popup) {
     popup.classList.add('popup_opened');
-    enableValidation(validationConfig);
     document.addEventListener('click', closePopUpByOverlay);
     document.addEventListener('keydown', closePopUpByEsc);
 }
@@ -72,12 +69,12 @@ function closePopUpByOverlay(evt) {
 
 function closePopUpByEsc(evt) {
   const popUpOpened = document.querySelector('.popup_opened');
-  if (evt.keyCode === 27) {
+  if (evt.keyCode === ESCAPE) {
     closePopUp(popUpOpened);
   }
 }
 
-function editPopUp() {
+function openProfileForm() {
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
     openPopUp(popUpEdit);
@@ -99,13 +96,13 @@ function handleProfileFormSubmit(evt) {
     closePopUp(popUpEdit);
 }
 
-editButton.addEventListener('click', editPopUp);
+editButton.addEventListener('click', openProfileForm);
 addButton.addEventListener('click', () => openPopUp(popUpAdd));
 
 closeButtons.forEach((item) => {
-  item.addEventListener('click', function closePopUp(evt) {
+  item.addEventListener('click', (evt) => {
       const popUpToClose = evt.target.closest('.popup');
-      popUpToClose.classList.remove('popup_opened');
+      closePopUp(popUpToClose);
   });
 });
 
