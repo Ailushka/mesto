@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const GhPagesWebpackPlugin = require('gh-pages-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -48,6 +49,16 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
+    new GhPagesWebpackPlugin({
+        path: './public',
+        options: {
+            message: 'Update Home Page',
+            user: {
+                name: 'Ailushka',
+                email: '2000swinger@mail.ru'
+            }
+        }
+    })
 
   ]
 }
