@@ -1,0 +1,28 @@
+{
+  "name": "yandex_praktikum",
+  "version": "0.0.1",
+  "description": "* О проекте\r * GitHub Pages\r * Технологии",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ailushka/mesto.git"
+  },
+  "author": "Yulia Okhotina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ailushka/mesto/issues"
+  },
+  "homepage": "https://github.com/Ailushka/mesto#readme",
+  "devDependencies": {
+    "webpack": "^5.23.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "rimraf": "^3.0.2"
+  }
+}

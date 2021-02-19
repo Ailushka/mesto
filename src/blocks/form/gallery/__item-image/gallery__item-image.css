@@ -1,0 +1,11 @@
+.gallery__item-image {
+  width: 282px;
+  height: 282px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.gallery__item-image:hover {
+  cursor: pointer;
+}
