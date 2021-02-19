@@ -22,8 +22,14 @@ export class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
-    this._form.addEventListener('submit', this._submitForm);
     super.setEventListeners();
+    this._form.addEventListener('submit', this._submitForm);
+  }
+
+  close() {
+    this._form.reset();
+
+    super.close();
   }
 
   _submitForm(evt) {
@@ -33,9 +39,5 @@ export class PopupWithForm extends Popup {
 
   }
 
-  close() {
-    this._form.reset();
-    this._form.removeEventListener('submit', this._submitForm);
-    super.close();
-  }
+
 }

@@ -1,3 +1,5 @@
+import './index.css';
+
 import { initialCards } from '../utils/initial-сards.js';
 import { FormValidator, validationConfig } from '../components/FormValidator.js';
 import { Card } from '../components/Card.js';
@@ -58,15 +60,16 @@ const userInfo = new UserInfo('.profile__name', '.profile__job');
 
 const popupProfileForm = new PopupWithForm('.popup_type_edit', (item) => {
   userInfo.setUserInfo(item.name, item.job);
-  popupProfileForm.setEventListeners();
-  popupProfileForm.removeEventListeners();
+  popupProfileForm.close();
 }
 );
+
+popupProfileForm.setEventListeners();
 
 
 editButton.addEventListener('click', () => {
   popupProfileForm.open();
-  popupProfileForm.setEventListeners();
+
   const user = userInfo.getUserInfo();
   nameInput.setAttribute('value', user.name);
   jobInput.setAttribute('value', user.job);

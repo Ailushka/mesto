@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Mesto Russia</title>
-    <link rel="stylesheet" href="./pages/index.css" />
+    
   </head>
   <body class="page">
     <header class="header container">
       <div class="header__content">
-        <img class="header__logo" src="./images/logo.svg" alt="Логотип проекта Mesto Russia" />
+        <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип проекта Mesto Russia" />
       </div>
     </header>
 
     <main class="main">
       <section class="profile container">
-        <img class="profile__avatar" alt="Фото профиля" src="./images/avatar-image.jpg" />
+        <img class="profile__avatar" alt="Фото профиля" src="<%=require('./images/avatar-image.jpg')%>" />
         <div class="profile__text">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button type="button" class="button button_type_edit" aria-label="Редактировать"></button>
@@ -66,14 +66,14 @@
     </div>
     <div class="popup popup_type_image">
       <div class="popup__image-container">
-        <img class="popup__image" src="./images/zaglushka_282x282.png" alt="#" />
+        <img class="popup__image" src="<%=require('./images/zaglushka_282x282.png')%>" alt="#" />
         <h3 class="popup__image-title">Для проверки</h3>
         <button class="button button_type_close" type="button" aria-label="Закрыть"></button>
       </div>
     </div>
     <template class="template">
       <li class="gallery__item">
-        <img class="gallery__item-image" src="./images/zaglushka_282x282.png" alt="#" />
+        <img class="gallery__item-image" src="<%=require('./images/zaglushka_282x282.png')%>" alt="#" />
         <button type="button" class="button button_type_delete" aria-label="Удалить"></button>
         <div class="gallery__item-info">
           <h2 class="gallery__item-title"></h2>
@@ -81,6 +81,6 @@
         </div>
       </li>
     </template>
-    <script type="module" src="./pages/index.js"></script>
+
   </body>
 </html>
