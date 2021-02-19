@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/Ailushka/mesto/issues"
   },
-  "homepage": "https://github.com/Ailushka/mesto#readme",
+  "homepage": "https://github.com/Ailushka/mesto",
   "devDependencies": {
     "@babel/core": "^7.12.17",
     "@babel/preset-env": "^7.12.17",
