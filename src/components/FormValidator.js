@@ -53,14 +53,20 @@ export class FormValidator {
               this._checkInputValidity(input);
               this._setButtonState(this._form.checkValidity());
           });
+      this._form.addEventListener('reset', () => {
+            this._inputList.forEach((inputElement) => {
+                this._hideError(inputElement)
+            })
+            this._setButtonState(false);
+        });
       });
   }
 
   enableValidation() {
+      this._setButtonState(this._form.checkValidity());
       this._setEventListeners();
       this._form.addEventListener('submit', (evt) => {
         evt.preventDefault();
-        this._setButtonState(this._form.checkValidity());
       })
   }
 }

@@ -26,33 +26,35 @@ newCardValidator.enableValidation();
 const popupWithImage = new PopupWithImage('.popup__image-title', '.popup__image', '.popup_type_image');
 popupWithImage.setEventListeners();
 
-const initialCardList = new Section({ items: initialCards, renderer: (item) => {
+const createCard = (item) => {
   const card = new Card({ data: item, handleCardClick: () => {
     popupWithImage.open(item.name, item.link);
   }
 }, '.template');
   const cardElement = card.generateCard();
-  initialCardList.addItem(cardElement);
+
+  return cardElement;
+}
+
+const initialCardList = new Section({ items: initialCards, renderer: (item) => {
+  const initialCardElement = createCard(item);
+  initialCardList.addItem(initialCardElement);
 }
 }, '.gallery__list');
 
 initialCardList.renderList();
 
 const popupImageForm = new PopupWithForm('.popup_type_add', (item) => {
-    const card = new Card({ data: item, handleCardClick: () => {
-      popupWithImage.open(item.name, item.link);
-    }
-  }, '.template');
-    const cardElement = card.generateCard();
-    initialCardList.addNewItem(cardElement);
+    const newCardElement = createCard(item);
+    initialCardList.addNewItem(newCardElement);
     popupImageForm.close();
-    popupImageForm.removeEventListeners();
   }
 ,);
 
+popupImageForm.setEventListeners();
+
 addButton.addEventListener('click', () => {
     popupImageForm.open();
-    popupImageForm.setEventListeners();
 }
 );
 
