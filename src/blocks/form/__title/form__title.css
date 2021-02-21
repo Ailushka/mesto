@@ -4,7 +4,7 @@
   line-height: calc(29 / 24);
   color: black;
   padding: 0;
-  margin: 0;
+  margin: 0 0 38px;
 }
 
 @media (max-width: 768px) {

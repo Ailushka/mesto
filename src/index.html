@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Mesto Russia</title>
-    
+
   </head>
   <body class="page">
     <header class="header container">
@@ -16,7 +16,9 @@
 
     <main class="main">
       <section class="profile container">
-        <img class="profile__avatar" alt="Фото профиля" src="<%=require('./images/avatar-image.jpg')%>" />
+        <div class="profile__overlay">
+          <img class="profile__avatar" alt="Фото профиля" src="<%=require('./images/avatar-image.jpg')%>" />
+        </div>
         <div class="profile__text">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button type="button" class="button button_type_edit" aria-label="Редактировать"></button>
@@ -71,13 +73,39 @@
         <button class="button button_type_close" type="button" aria-label="Закрыть"></button>
       </div>
     </div>
+
+    <div class="popup popup_type_confirm">
+      <div class="popup__container popup__container_type_confirm">
+        <form class="form form_type_confirm" name="confirm-form">
+          <h2 class="form__title">Вы уверены?</h2>
+          <button class="button button_type_save" type="submit">Да</button>
+        </form>
+        <button class="button button_type_close" type="button" aria-label="Закрыть"></button>
+      </div>
+    </div>
+
+    <div class="popup popup_type_avatar-update">
+      <div class="popup__container popup__container_type_avatar-update">
+        <form class="form form_type_avatar-update" name="avatar-update-form">
+          <h2 class="form__title">Обновить аватар</h2>
+          <input class="form__item form__item_type_avatar-update" type="url" name="link" placeholder="Ссылка на аватар" id="avatar-update" required novalidate />
+          <span id="avatar-update-error" class="form__item-error"></span>
+          <button class="button button_type_save" type="submit">Сохранить</button>
+        </form>
+        <button class="button button_type_close" type="button" aria-label="Закрыть"></button>
+      </div>
+
+
     <template class="template">
       <li class="gallery__item">
         <img class="gallery__item-image" src="<%=require('./images/zaglushka_282x282.png')%>" alt="#" />
         <button type="button" class="button button_type_delete" aria-label="Удалить"></button>
         <div class="gallery__item-info">
           <h2 class="gallery__item-title"></h2>
-          <button type="button" class="button button_type_like" aria-label="Нравится"></button>
+          <div class="gallery__item-likes">
+            <button type="button" class="button button_type_like" aria-label="Нравится"></button>
+            <span class="gallery__item-like-counter"></span>
+          </div>
         </div>
       </li>
     </template>
