@@ -37,6 +37,26 @@ newAvatarValidator.enableValidation();
 
 const api = new Api('https://mesto.nomoreparties.co/v1/cohort-20', 'aeac4cc4-9284-4753-bb8f-afa2eb1b5233');
 
+const popupWithConfirm = new PopupWithConfirm('.popup_type_confirm',
+(element, data) => {
+  console.log(element);
+  popupWithConfirm.renderLoading(true);
+
+  api.deleteCard(data._id)
+    .then(() => {
+      element.remove();
+      element = null;
+    })
+    .catch(err => console.log(err))
+    .finally(() => {
+      popupWithConfirm.renderLoading(false);
+      popupWithConfirm.close();
+    })
+}
+)
+
+popupWithConfirm.setEventListeners();
+
 api.getUserInfo()
   .then((data) => {
     userInfo.setUserInfo(data);
@@ -46,8 +66,8 @@ api.getUserInfo()
 const createCard = (cardData) => {
   const card = new Card(
     cardData,
-    function handleCardClick(name, link) {
-      popupWithImage.open(name, link);
+    function handleCardClick() {
+      popupWithImage.open(cardData.name, cardData.link);
     },
     function handleLikeClick() {
       if(!this.isLiked(cardData)) {
@@ -60,8 +80,8 @@ const createCard = (cardData) => {
           .catch(err => console.log(err));
       }
     },
-    function handleDeleteIconClick(card) {
-      popupWithConfirm.open({card});
+    function handleDeleteIconClick(evt) {
+      popupWithConfirm.open(evt.target.parentElement, cardData);
     },
     '.template',
     userInfo.getId()
@@ -81,25 +101,6 @@ api.getInitialCards()
 
   const popupWithImage = new PopupWithImage('.popup__image-title', '.popup__image', '.popup_type_image');
   popupWithImage.setEventListeners();
-
-  const popupWithConfirm = new PopupWithConfirm('.popup_type_confirm',
-  (cardId, element) => {
-    console.log(element);
-    popupWithConfirm.renderLoading(true);
-
-    api.deleteCard(cardId)
-      .then(() => {
-        popupWithConfirm.removeCard();
-      })
-      .catch(err => console.log(err))
-      .finally(() => {
-        popupWithConfirm.renderLoading(false);
-        popupWithConfirm.close();
-      })
-  }
-)
-
-  popupWithConfirm.setEventListeners();
 
   const popupImageForm = new PopupWithForm('.popup_type_add', (item) => {
     popupImageForm.renderLoading(true);

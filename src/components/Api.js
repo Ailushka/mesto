@@ -12,13 +12,7 @@ export class Api {
         authorization: this._password,
       }
     })
-    .then((res) => {
-      if(res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    }
-  )
+    .then(this._checkResponse)
   }
 
   // загрузка карточек с сервера (получаем список всех карточек в виде массива)
@@ -29,13 +23,7 @@ export class Api {
         authorization: this._password,
       }
     })
-    .then((res) => {
-      if(res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    }
-  )
+    .then(this._checkResponse)
   }
 
   // редактирование профиля (меняем данные пользователя)
@@ -51,13 +39,7 @@ export class Api {
         about: job
       })
     })
-    .then((res) => {
-      if(res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    }
-  )
+    .then(this._checkResponse)
   }
 
   // добавление новой карточки
@@ -73,13 +55,7 @@ export class Api {
         link: item.link
       })
     })
-    .then((res) => {
-      if(res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    }
-  )
+    .then(this._checkResponse)
   }
 
   // удаление карточки
@@ -90,13 +66,7 @@ export class Api {
         authorization: this._password,
       }
     })
-    .then((res) => {
-      if(res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    }
-  )
+    .then(this._checkResponse)
   }
 
   // постановка лайка
@@ -107,13 +77,7 @@ export class Api {
         authorization: this._password,
       }
     })
-    .then((res) => {
-      if(res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    }
-  )
+    .then(this._checkResponse)
   }
 
   // снятие лайка
@@ -124,13 +88,7 @@ export class Api {
         authorization: this._password,
       }
     })
-    .then((res) => {
-      if(res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    }
-  )
+    .then(this._checkResponse)
   }
 
   // обновление аватара пользователя
@@ -145,13 +103,13 @@ export class Api {
         avatar: avatar
       })
     })
-    .then((res) => {
-      if(res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    }
-  )
+    .then(this._checkResponse)
   }
 
+  _checkResponse(res) {
+    if(res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  }
 }

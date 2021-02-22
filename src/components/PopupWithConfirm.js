@@ -9,10 +9,10 @@ export class PopupWithConfirm extends Popup {
     this._submitButton = this._form.querySelector('.button_type_save');
   }
 
-  open(cardData) {
+  open(item, data) {
     super.open();
-    this._cardId = cardData.card._cardId;
-    this._element = cardData.card._element;
+    this._element = item;
+    this._data = data;
   }
 
   renderLoading(isLoading) {
@@ -28,7 +28,7 @@ export class PopupWithConfirm extends Popup {
 
   _handleFormSubmit(evt) {
     evt.preventDefault();
-    this._formSubmitCallback(this._cardId, this._element);
+    this._formSubmitCallback(this._element, this._data);
   }
 
   removeCard() {

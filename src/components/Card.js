@@ -1,14 +1,15 @@
 // создаем класс
 export class Card {
   constructor(data, handleCardClick, handleLikeClick, handleDeleteIconClick, cardSelector, myId) {
-    this._cardData = data;
-    this._title = this._cardData.name;
-    this._link = this._cardData.link;
-    this._name = this._cardData.name;
-    this._likes = this._cardData.likes.length;
-    this._cardId = this._cardData._id;
-    this._ownerId = this._cardData.owner._id;
+
+    this._title = data.name;
+    this._link = data.link;
+    this._name = data.name;
+    this._likes = data.likes.length;
+    this._cardId = data._id;
+    this._ownerId = data.owner._id;
     this._myId = myId;
+    this._cardData = data;
 
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick.bind(this);
@@ -76,13 +77,9 @@ export class Card {
     });
 
     if(this._checkMyCard()) {
-      this._element.querySelector('.button_type_delete').addEventListener('click', () => {
-        this._handleDeleteIconClick(this)
-      });
+      this._element.querySelector('.button_type_delete').addEventListener('click', this._handleDeleteIconClick);
     }
 
-    this._element.querySelector('.gallery__item-image').addEventListener('click', () => {
-       this._handleCardClick(this._name, this._link)
-    });
-  }
+    this._element.querySelector('.gallery__item-image').addEventListener('click', this._handleCardClick);
+}
 }
