@@ -5,6 +5,10 @@ export class UserInfo {
     this._userAvatar = document.querySelector(userAvatarSelector);
   }
 
+  getId() {
+    return this._id;
+  }
+
   getUserInfo() {
     return {
       name: this._nameProfile.textContent,
@@ -12,10 +16,15 @@ export class UserInfo {
     }
   }
 
-  setUserInfo(name, job, avatar) {
-    this._nameProfile.textContent = name;
-    this._jobProfile.textContent = job;
+  updateAvatar(avatar) {
     this._userAvatar.src = avatar;
-    this._userAvatar.alt = name;
+    this._userAvatar.alt = 'Аватар пользователя';
+  }
+
+  setUserInfo(data) {
+    this._id = data._id;
+    this._nameProfile.textContent = data.name;
+    this._jobProfile.textContent = data.about;
+    this._userAvatar.src = data.avatar;
   }
 }

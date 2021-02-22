@@ -22,6 +22,7 @@ import {
   updateAvatar,
   userName,
   userJob,
+  cardSelector,
   userId
 } from '../utils/constants.js';
 
@@ -36,43 +37,36 @@ newAvatarValidator.enableValidation();
 
 const api = new Api('https://mesto.nomoreparties.co/v1/cohort-20', 'aeac4cc4-9284-4753-bb8f-afa2eb1b5233');
 
-const popupWithImage = new PopupWithImage('.popup__image-title', '.popup__image', '.popup_type_image');
-popupWithImage.setEventListeners();
-
-const popupWithConfirm = new PopupWithConfirm('.popup_type_confirm',
-(props) => {
-  const {card} = props;
-  popupWithConfirm.renderLoading(true);
-  api.deleteCard(card._id)
-    .then(() => card.removeElement())
-    .catch(err => console.log(err))
-    .finally(() => {
-      popupWithConfirm.renderLoading(false);
-      popupWithConfirm.close();
-    })
-})
-
-popupWithConfirm.setEventListeners();
-
 api.getUserInfo()
   .then((data) => {
     userInfo.setUserInfo(data);
-    userId = data._id;
   })
   .catch(err => console.log(err));
 
-const createCard = (item) => {
-  const card = new Card({ data: item,
-    handleCardClick: () => {
-    popupWithImage.open(item.name, item.link);
-  },
-    handleDeleteIconClick: () => {
-      popupWithConfirm.open(card, item._id);
-    }
-}, '.template', userId, api);
-  const cardElement = card.generateCard();
-
-  return cardElement;
+const createCard = (cardData) => {
+  const card = new Card(
+    cardData,
+    function handleCardClick(name, link) {
+      popupWithImage.open(name, link);
+    },
+    function handleLikeClick() {
+      if(!this.isLiked(cardData)) {
+        api.putLike(cardData._id)
+          .then(result => this.handleLikeButton(result))
+          .catch(err => console.log(err));
+      } else {
+        api.deleteLike(cardData._id)
+          .then(result => this.handleLikeButton(result))
+          .catch(err => console.log(err));
+      }
+    },
+    function handleDeleteIconClick(card) {
+      popupWithConfirm.open({card});
+    },
+    '.template',
+    userInfo.getId()
+  ).generateCard();
+  return card;
 }
 
 const initialCardList = new Section('.gallery__list');
@@ -85,9 +79,30 @@ api.getInitialCards()
   })
   .catch(err => console.log(err));
 
-const popupImageForm = new PopupWithForm('.popup_type_add', (item) => {
+  const popupWithImage = new PopupWithImage('.popup__image-title', '.popup__image', '.popup_type_image');
+  popupWithImage.setEventListeners();
+
+  const popupWithConfirm = new PopupWithConfirm('.popup_type_confirm',
+  (cardId) => {
+
+    popupWithConfirm.renderLoading(true);
+
+    api.deleteCard(cardId)
+      .then(() => {
+        popupWithConfirm.removeCard();
+      })
+      .catch(err => console.log(err))
+      .finally(() => {
+        popupWithConfirm.renderLoading(false);
+        popupWithConfirm.close();
+      })
+  })
+
+  popupWithConfirm.setEventListeners();
+
+  const popupImageForm = new PopupWithForm('.popup_type_add', (item) => {
     popupImageForm.renderLoading(true);
-    api.postCard({item.name, item.link})
+    api.postCard(item)
       .then((data) => {
         initialCardList.addNewItem(createCard(data))
       })
@@ -102,11 +117,12 @@ popupImageForm.setEventListeners();
 
 const userInfo = new UserInfo('.profile__name', '.profile__job', '.profile__avatar');
 
-const popupProfileForm = new PopupWithForm('.popup_type_edit', (item) => {
+const popupProfileForm = new PopupWithForm('.popup_type_edit', (data) => {
     popupProfileForm.renderLoading(true);
-    api.patchUserInfo({item.name, item.job})
-      .then((data) => {
-        userInfo.setUserInfo(data)
+
+    api.patchUserInfo(data.name, data.job)
+      .then((result) => {
+        userInfo.setUserInfo(result)
       })
       .catch(err => console.log(err))
       .finally(() => {
@@ -119,8 +135,8 @@ popupProfileForm.setEventListeners();
 
 const popupAvatarForm = new PopupWithForm('.popup_type_avatar-update', (item) => {
     popupAvatarForm.renderLoading(true);
-    updatedAvatar.src = item.avatar;
-    api.patchUserAvatar(item)
+    api.patchUserAvatar(item.link)
+      .then(() => userInfo.updateAvatar(item.link))
       .catch(err => console.log(err))
       .finally(() => {
         popupAvatarForm.renderLoading(false);

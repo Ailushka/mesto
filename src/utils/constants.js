@@ -9,4 +9,5 @@ export const updatedAvatar = document.querySelector('.profile__avatar');
 export const updateAvatar = document.querySelector('.profile__overlay');
 export const userName = document.querySelector('.profile__name');
 export const userJob = document.querySelector('.profile__job');
+export const cardSelector = document.querySelector('.template');
 export let userId;

@@ -39,7 +39,7 @@ export class Api {
   }
 
   // редактирование профиля (меняем данные пользователя)
-  patchUserInfo(item) {
+  patchUserInfo(name, job) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: {
@@ -47,8 +47,8 @@ export class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: item.name,
-        about: item.job
+        name: name,
+        about: job
       })
     })
     .then((res) => {
@@ -134,7 +134,7 @@ export class Api {
   }
 
   // обновление аватара пользователя
-  patchUserAvatar(item) {
+  patchUserAvatar(avatar) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
@@ -142,7 +142,7 @@ export class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        avatar: item.avatar
+        avatar: avatar
       })
     })
     .then((res) => {
