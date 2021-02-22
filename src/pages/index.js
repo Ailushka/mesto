@@ -83,8 +83,8 @@ api.getInitialCards()
   popupWithImage.setEventListeners();
 
   const popupWithConfirm = new PopupWithConfirm('.popup_type_confirm',
-  (cardId) => {
-
+  (cardId, element) => {
+    console.log(element);
     popupWithConfirm.renderLoading(true);
 
     api.deleteCard(cardId)
@@ -96,7 +96,8 @@ api.getInitialCards()
         popupWithConfirm.renderLoading(false);
         popupWithConfirm.close();
       })
-  })
+  }
+)
 
   popupWithConfirm.setEventListeners();
 

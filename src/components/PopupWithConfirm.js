@@ -13,7 +13,6 @@ export class PopupWithConfirm extends Popup {
     super.open();
     this._cardId = cardData.card._cardId;
     this._element = cardData.card._element;
-    console.log(cardData);
   }
 
   renderLoading(isLoading) {
@@ -29,11 +28,12 @@ export class PopupWithConfirm extends Popup {
 
   _handleFormSubmit(evt) {
     evt.preventDefault();
-    this._formSubmitCallback(this.cardId);
+    this._formSubmitCallback(this._cardId, this._element);
   }
 
   removeCard() {
     this._element.remove();
+    this._element = null;
   }
 
 }
